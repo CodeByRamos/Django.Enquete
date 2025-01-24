@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vota na enquete seu vacilao do caramba</title>
+</head>
+<body>
+    <form action="{% url 'Enquete:votacao' Perguntas.id %}" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend><h1>{{ Perguntas.textodapergunta }}</h1></legend>
+            {% if error_message %}
+                <p><strong>{{ error_message }}</strong></p>
+            {% endif %}
+            {% for escolha in Perguntas.escolhas.all %}
+                <input type="radio" name="escolha" id="escolha{{ forloop.counter }}" value="{{ escolha.id }}">
+                <label for="escolha{{ forloop.counter }}">{{ escolha.textodaescolha }}</label><br>
+            {% endfor %}
+        </fieldset>
+        <input type="submit" value="Votar">
+    </form>
+    
+</body>
+</html>

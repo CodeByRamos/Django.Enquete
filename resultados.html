@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados da Enquete</title>
+</head>
+<body>
+    <h1>Resultados: {{ Perguntas.textodapergunta }}</h1>
+    <ul>
+        {% for Escolhas in Perguntas.escolhas.all %}
+        <li>{{ Escolha.textodaescolha }}: {{ Escolha.votos }} voto(s)</li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <a href="{% url 'Enquete:votacao' Perguntas.id %}">Votar novamente</a><br>
+    <a href="{% url 'Enquete:index' %}">Voltar para a lista de enquetes</a>
+</body>
+</html>

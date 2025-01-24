@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquete da Rapa</title>
+</head>
+<body>
+    {% if ultimasquestoes %}
+        <ul>
+        {% for questao in ultimasquestoes %}
+            <li>
+                <a href="{% url 'Enquete:votacao' questao.id %}">{{ questao.textodapergunta }}</a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Não existem enquetes disponíveis.</p>
+    {% endif %}
+</body>
+</html>
