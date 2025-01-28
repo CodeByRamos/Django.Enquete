@@ -8,8 +8,8 @@
 <body>
     <h1>Resultados: {{ Perguntas.textodapergunta }}</h1>
     <ul>
-        {% for Escolhas in Perguntas.escolhas.all %}
-        <li>{{ Escolha.textodaescolha }}: {{ Escolha.votos }} voto(s)</li>
+        {% for escolha in Perguntas.escolhas.all %}
+        <li>{{ escolha.textodaescolha }}: {{ escolha.votos }} voto(s)</li>
         {% endfor %}
     </ul>
     <hr>
